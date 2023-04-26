@@ -78,9 +78,9 @@ class Invman(models.Model):
         self.save()
 
     
-class Brand(models.Model):
-    bname=models.CharField(max_length=50, default="Nike")
-    vendors= models.ForeignKey(Vendor,on_delete=models.CASCADE,default=1 )
+# class Brand(models.Model):
+#     bname=models.CharField(max_length=50, default="Nike")
+#     vendors= models.ForeignKey(Vendor,on_delete=models.CASCADE,default=1 )
 
 class Product(models.Model):
     productname = models.CharField(max_length=60,default="coldr")
