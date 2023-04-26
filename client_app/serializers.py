@@ -30,9 +30,3 @@ class InvmanSerializer(serializers.ModelSerializer):
     class Meta:
         model = Invman
         fields = '__all__'
-
-class BrandSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Brand
-        fields = '__all__'
-

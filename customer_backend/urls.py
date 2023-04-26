@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include,re_path
 
 from client_app import views
 from django.views.generic.base import TemplateView
@@ -25,5 +25,11 @@ urlpatterns = [
     path('',views.index,name="custom"),
     path('api/', include('client_app.urls')),
     path('manifest.json', TemplateView.as_view(template_name='manifest.json', content_type='application/json'), name='manifest.json'),
-
+    # re_path(r'^api/customer/$', views.custm_list),
+    # re_path(r'^api/product/$', views.prod_list),
+    # re_path(r'^api/category/$', views.categ_list),
+    # re_path(r'^api/subcategory/$', views.subcateg_list),
+    # re_path(r'^api/delivpar/$', views.deliv_list),
+    # re_path(r'^api/invman/$', views.invm_list),
+  
 ]
