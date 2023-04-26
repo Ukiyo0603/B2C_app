@@ -54,6 +54,11 @@ h1{
     margin-top: -20rem;
   }
 
+  .card-offer{
+    font-weight: 0;
+    font-size: 6px;
+  }
+
   h1{
     display: none;
   }

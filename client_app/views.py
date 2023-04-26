@@ -12,3 +12,6 @@ def getRoutes(request):
 @api_view(['GET'])
 def getProducts(request):
     return Response(products, safe=False)
+
+def index(request):
+    return render(request,'index.html')
