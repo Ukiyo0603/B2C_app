@@ -32,7 +32,7 @@ function Sidebar() {
         </div>
         <ul className="sidebar-links">
           <li>
-            <Link to="/home">
+            <Link to="/">
               <FaHome size={25} />
               <span>Home</span>
             </Link>
