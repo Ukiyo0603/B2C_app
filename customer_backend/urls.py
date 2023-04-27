@@ -23,8 +23,10 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name="custom"),
+    path('uom',views.inx,name="cuom"),
     path('api/', include('client_app.urls')),
     path('manifest.json', TemplateView.as_view(template_name='manifest.json', content_type='application/json'), name='manifest.json'),
+
     # re_path(r'^api/customer/$', views.custm_list),
     # re_path(r'^api/product/$', views.prod_list),
     # re_path(r'^api/category/$', views.categ_list),
