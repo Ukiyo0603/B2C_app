@@ -1,6 +1,7 @@
 .product-list-page {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .top-nav {
@@ -29,7 +30,7 @@
 .product-list-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   padding: 10px;
 }
 
@@ -84,6 +85,12 @@
 .product-price a{
   text-decoration: none;
   color: #fff;
+}
+
+@media only screen and (max-width: 768px){
+  .product-list-page{
+    margin-top: -22rem;
+  }
 }
 
 @media only screen and (min-width: 576px) {

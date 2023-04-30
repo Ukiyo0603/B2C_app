@@ -88,7 +88,7 @@ const cardsData = [
 
 const Cards = () => {
   return (
-    <>
+    <div>
       <h1>Shop By Category</h1>
       <div className="cards">
         {cardsData.map((card) => (
@@ -101,7 +101,7 @@ const Cards = () => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

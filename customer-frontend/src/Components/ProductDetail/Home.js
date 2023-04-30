@@ -6,7 +6,7 @@ import Detail from "./Detail";
 const Home = () => {
   return (
     <div className="major-container">
-      <Header />
+      <Header screenname={ "CUS 104"} />
       <div className="C">
         <Detail />
       </div>
