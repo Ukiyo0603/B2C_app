@@ -8,6 +8,7 @@ function Signup() {
   const { register, handleSubmit, formState: { errors } } = useForm();
     const [userInfo, setUserInfo] = useState();
     const [selectedState, setSelectedState] = useState("");
+    const [passwordMatchError, setPasswordMatchError] = useState(false);
     const statesList = [
         "Andaman and Nicobar Islands",
         "Andhra Pradesh",
@@ -57,10 +58,15 @@ function Signup() {
     navigate("/home");
   };
 
-  const onSignupSubmit = (e) => {
-    e.preventDefault();
-    // register user
-    navigate("/home");
+  const onSignupSubmit = (data) => {
+    if (data.password !== data.confirmPassword) {
+      setPasswordMatchError(true);
+    } else {
+      setPasswordMatchError(false);
+      setUserInfo(data);
+      console.log(data);
+      navigate("/home");
+    }
   };
 
   return (
@@ -96,12 +102,6 @@ function Signup() {
             <p className="phone-error">{errors.email && "phone is required"}</p>
 
             <div className="field-input">
-              <label>Password</label>
-              <input required className="password-input" type="password" name="password" placeholder="Enter Password" {...register('password', { required: true }, { minLength: 4 })} />
-            </div>
-            <p className="password-error">{errors.password && "Password is required"}</p>
-
-            <div className="field-input">
               <label>State</label>
               <select className="state-input" value={selectedState} onChange={onStateChange}>
                 <option value="">Select a state...</option>
@@ -113,6 +113,19 @@ function Signup() {
               </select>
             </div>
 
+
+            <div className="field-input">
+              <label>Password</label>
+              <input required className="password-input" type="password" name="password" placeholder="Enter Password" {...register('password', { required: true }, { minLength: 4 })} />
+            </div>
+            <p className="password-error">{errors.password && "Password is required"}</p>
+
+            <div className="field-input">
+              <label>Confirm Password</label>
+              <input required className="password-input" type="password" name="confirmPassword" placeholder="Confirm Password" {...register('confirmPassword', { required: true })} />
+            </div>
+            {passwordMatchError && <p className="password-error">Passwords do not match</p>}
+            
             <button className="submit-button">SIGN UP</button>
             <p className="login-link">Already registered? <Link to="/login">Log in here</Link></p>
           </form>
