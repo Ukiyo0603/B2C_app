@@ -7,9 +7,6 @@ import { CustomerSchema } from "./Schema";
 
 function Signup() {
   const navigate = useNavigate();
-  const [userInfo, setUserInfo] = useState();
-  const [selectedState, setSelectedState] = useState("");
-  const [selectedCity, setSelectedCity] = useState("");
   const statesList = [
     "Andaman and Nicobar Islands",
     "Andhra Pradesh",
@@ -49,20 +46,6 @@ function Signup() {
     "West Bengal"
   ];
 
-  const onStateChange = (e) => {
-    setSelectedState(e.target.value);
-  };
-
-  const onCityChange = (e) => { // add a handler for city selection change
-    setSelectedCity(e.target.value);
-  };
-
-  const onSubmit = (data) => {
-    setUserInfo(data);
-    console.log(data);
-    navigate("/home");
-  };
-
   const initialValues = {
     firstname: '',
     lastname: '',
@@ -101,25 +84,15 @@ function Signup() {
     })
       .then((response) => {
         console.log(response);
+        navigate('/home')
       })
       .catch((error) => console.log(error))
 
   }
 
 
-  const onSignupSubmit = (e) => {
-    e.preventDefault();
-    // register user
-    navigate("/home");
-  };
-
   return (
     <div className="signup-container">
-      {/* <img src="https://thumbs.dreamstime.com/b/flat-lay-composition-overturned-paper-bag-groceries-black-wooden-background-space-text-flat-lay-composition-157615767.jpg" alt="" className='bgimage'/> */}
-
-      {/* printing submitted data on screen */}
-      <pre className="text-white">{JSON.stringify(userInfo, undefined, 2)}</pre>
-
       <div className="signup-box">
         <div className="signup-form">
           <form className="form-container" onSubmit={handleSubmit}>
@@ -152,7 +125,7 @@ function Signup() {
 
             <div className="field-input">
               <label>State</label>
-              <select className="state-input" name="state" value={selectedState} onChange={onStateChange}>
+              <select className="state-input" name="state" value={values.state} onBlur={handleBlur} onChange={handleChange} >
                 <option value="">Select a state...</option>
                 {statesList.map((state, index) => (
                   <option key={index} value={state}>
@@ -164,7 +137,7 @@ function Signup() {
 
             <div className="field-input">
               <label>City</label>
-              <select className="state-input" name="city" value={selectedState} onChange={onStateChange}>
+              <select className="state-input" name="city" value={values.city} onBlur={handleBlur} onChange={handleChange} >
                 <option value="">Select a city...</option>
                 {statesList.map((state, index) => (
                   <option key={index} value={state}>
