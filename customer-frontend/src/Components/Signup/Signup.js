@@ -1,72 +1,116 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import './Signup.css'
+import { useFormik } from "formik";
+import axios from 'axios';
+import { CustomerSchema } from "./Schema";
 
 function Signup() {
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors } } = useForm();
-    const [userInfo, setUserInfo] = useState();
-    const [selectedState, setSelectedState] = useState("");
-    const [passwordMatchError, setPasswordMatchError] = useState(false);
-    const statesList = [
-        "Andaman and Nicobar Islands",
-        "Andhra Pradesh",
-        "Arunachal Pradesh",
-        "Assam",
-        "Bihar",
-        "Chandigarh",
-        "Chhattisgarh",
-        "Dadra and Nagar Haveli and Daman and Diu",
-        "Delhi",
-        "Goa",
-        "Gujarat",
-        "Haryana",
-        "Himachal Pradesh",
-        "Jammu and Kashmir",
-        "Jharkhand",
-        "Karnataka",
-        "Kerala",
-        "Ladakh",
-        "Lakshadweep",
-        "Madhya Pradesh",
-        "Maharashtra",
-        "Manipur",
-        "Meghalaya",
-        "Mizoram",
-        "Nagaland",
-        "Odisha",
-        "Puducherry",
-        "Punjab",
-        "Rajasthan",
-        "Sikkim",
-        "Tamil Nadu",
-        "Telangana",
-        "Tripura",
-        "Uttar Pradesh",
-        "Uttarakhand",
-        "West Bengal"
-    ];
-    
-    const onStateChange = (e) => {
-        setSelectedState(e.target.value);
-    };
-    
+  const [userInfo, setUserInfo] = useState();
+  const [selectedState, setSelectedState] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
+  const statesList = [
+    "Andaman and Nicobar Islands",
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chandigarh",
+    "Chhattisgarh",
+    "Dadra and Nagar Haveli and Daman and Diu",
+    "Delhi",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jammu and Kashmir",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Ladakh",
+    "Lakshadweep",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Puducherry",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "Uttarakhand",
+    "West Bengal"
+  ];
+
+  const onStateChange = (e) => {
+    setSelectedState(e.target.value);
+  };
+
+  const onCityChange = (e) => { // add a handler for city selection change
+    setSelectedCity(e.target.value);
+  };
+
   const onSubmit = (data) => {
     setUserInfo(data);
     console.log(data);
     navigate("/home");
   };
 
-  const onSignupSubmit = (data) => {
-    if (data.password !== data.confirmPassword) {
-      setPasswordMatchError(true);
-    } else {
-      setPasswordMatchError(false);
-      setUserInfo(data);
-      console.log(data);
-      navigate("/home");
-    }
+  const initialValues = {
+    firstname: '',
+    lastname: '',
+    contact: '',
+    state: '',
+    city: '',
+    address: '',
+    password: '',
+    confirmpassword: '',
+  }
+
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues,
+      validationSchema: CustomerSchema,
+      onSubmit: (values, action) => {
+        console.log(
+          "🚀 ~ file: Registration.jsx ~ line 11 ~ Registration ~ values",
+          values
+        );
+        action.resetForm();
+        handlereq();
+      },
+    });
+
+
+  const handlereq = () => {
+    axios.post("https://admindb.onrender.com/api/customer/", {
+      firstname: values.firstname,
+      lastname: values.lastname,
+      contact: values.contact,
+      state: values.state,
+      city: values.city,
+      address: values.address,
+      password: values.password,
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => console.log(error))
+
+  }
+
+
+  const onSignupSubmit = (e) => {
+    e.preventDefault();
+    // register user
+    navigate("/home");
   };
 
   return (
@@ -78,32 +122,37 @@ function Signup() {
 
       <div className="signup-box">
         <div className="signup-form">
-          <form className="form-container" onSubmit={onSignupSubmit}>
+          <form className="form-container" onSubmit={handleSubmit}>
             <h2 className="form-header">SIGN UP</h2>
             <hr className="form-input" />
 
-            <div className="field-input">
-              <label>First Name</label>
-              <input required className="name-input" type="text" name="name" placeholder="Enter First Name" {...register('name', { required: true })} />
+            <div className='flex flex-col py-2'>
+              <label>Firstname</label>
+              <input value={values.firstname} autoComplete="off" className='name-input' type="text" name='firstname' placeholder='Enter First Name' onBlur={handleBlur} onChange={handleChange} />
+              {errors.firstname && touched.firstname ? (
+                <p className="form-error">{errors.firstname}</p>
+              ) : null}
             </div>
-            <p className="name-error">{errors.name && "First Name is required"}</p>
-            
-            <div className="field-input">
-              <label>Last Name</label>
-              <input required className="name-input" type="text" name="name" placeholder="Enter Last Name" {...register('name', { required: true })} />
+            <div className='flex flex-col py-2'>
+              <label>Lastname</label>
+              <input value={values.lastname} className='name-input' type="text" name='lastname' placeholder='Enter Last Name' onBlur={handleBlur} onChange={handleChange} />
+              {errors.lastname && touched.lastname ? (
+                <p className="form-error">{errors.lastname}</p>
+              ) : null}
             </div>
-            <p className="name-error">{errors.name && "Name is required"}</p>
 
-                      
-            <div className="field-input">
-              <label>Phone</label>
-              <input required className="phone-input" type="text" name="number" placeholder="Enter your phone no." {...register('email', { required: true })} />
+
+            <div className='flex flex-col py-2'>
+              <label>Contact Number</label>
+              <input value={values.contact} className='phone-input' type="text" name='contact' placeholder='Enter Contact Number' onBlur={handleBlur} onChange={handleChange} />
+              {errors.contact && touched.contact ? (
+                <p className="form-error">{errors.contact}</p>
+              ) : null}
             </div>
-            <p className="phone-error">{errors.email && "phone is required"}</p>
 
             <div className="field-input">
               <label>State</label>
-              <select className="state-input" value={selectedState} onChange={onStateChange}>
+              <select className="state-input" name="state" value={selectedState} onChange={onStateChange}>
                 <option value="">Select a state...</option>
                 {statesList.map((state, index) => (
                   <option key={index} value={state}>
@@ -113,20 +162,48 @@ function Signup() {
               </select>
             </div>
 
-
             <div className="field-input">
+              <label>City</label>
+              <select className="state-input" name="city" value={selectedState} onChange={onStateChange}>
+                <option value="">Select a city...</option>
+                {statesList.map((state, index) => (
+                  <option key={index} value={state}>
+                    {state}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className='flex flex-col py-2'>
+              <label>Address</label>
+              <textarea onBlur={handleBlur} onChange={handleChange} value={values.address} rows="5" name="address" placeholder='Enter address' className='address-input'>
+              </textarea>
+              {errors.address && touched.address ? (
+                <p className="form-error">{errors.address}</p>
+              ) : null}
+            </div>
+
+
+            <div className='flex flex-col py-2'>
               <label>Password</label>
-              <input required className="password-input" type="password" name="password" placeholder="Enter Password" {...register('password', { required: true }, { minLength: 4 })} />
+              <input value={values.password} className='password-input' type="text" name='password' placeholder='Enter Password' onBlur={handleBlur} onChange={handleChange} />
+              {errors.password && touched.password ? (
+                <p className="form-error">{errors.password}</p>
+              ) : null}
             </div>
-            <p className="password-error">{errors.password && "Password is required"}</p>
 
-            <div className="field-input">
+            <div className='flex flex-col py-2'>
               <label>Confirm Password</label>
-              <input required className="password-input" type="password" name="confirmPassword" placeholder="Confirm Password" {...register('confirmPassword', { required: true })} />
+              <input value={values.confirmpassword} className='password-input' type="text" name='confirmpassword' placeholder='Confirm Password' onBlur={handleBlur} onChange={handleChange} />
+              {errors.confirmpassword && touched.confirmpassword ? (
+                <p className="form-error">{errors.confirmpassword}</p>
+              ) : null}
             </div>
-            {passwordMatchError && <p className="password-error">Passwords do not match</p>}
-            
-            <button className="submit-button">SIGN UP</button>
+
+
+
+
+            <button type="submit" className="submit-button">SIGN UP</button>
             <p className="login-link">Already registered? <Link to="/login">Log in here</Link></p>
           </form>
         </div>
