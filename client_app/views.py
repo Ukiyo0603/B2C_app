@@ -4,15 +4,18 @@ from .products import products
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from client_app.models import *
+from django.conf import settings
+from rest_framework.views import APIView
+from rest_framework import status
 
 # Create your views here.
 @api_view(['GET'])
 def getRoutes(request):
-    return Response('Hello',safe=False)
+    return Response('Hello')
 
 @api_view(['GET'])
 def getProducts(request):
-    return Response(products, safe=False)
+    return Response(products)
 
 def index(request):
     return render(request,'index.html')
@@ -61,3 +64,37 @@ class CheckOut(View):
         request.session['cart'] = {}
 
         return redirect('cart')
+    
+
+#PAYMENT Stripe
+
+
+import stripe
+# This is your test secret API key.
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
+class StripeCheckoutView(APIView):
+    def post(self, request):
+        if request.method == "POST":
+            try:
+                checkout_session = stripe.checkout.Session.create(
+                    line_items=[
+                        {
+                            # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                            'price': '{{PRICE_ID}}',
+                            'quantity': 1,
+                        },
+                    ],
+                    mode='payment',
+                    success_url=settings.SITE_URL + f'?success=true&session_id={CHECKOUT_SESSION_ID}',
+                    cancel_url=settings.SITE_URL + '?canceled=true&session_id={CHECKOUT_SESSION_ID}',
+                )
+
+                return redirect(checkout_session.url)
+            except:
+                return Response(
+                    {'error': 'Something went wrong while creating the stripe checkout session'},
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                )
+            
+

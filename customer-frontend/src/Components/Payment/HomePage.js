@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import {API_URL} from '../config/index';
 
 const HomePage = () => {
     useEffect(() => {
@@ -28,7 +29,7 @@ const HomePage = () => {
             <h5>$20.00</h5>
             </div>
             </div>
-            <form action="api/stripe/create-checkout-session" method="POST">
+            <form action={`${API_URL}api/payment`} method="POST">
             <button type="submit">
                 Checkout
             </button>
