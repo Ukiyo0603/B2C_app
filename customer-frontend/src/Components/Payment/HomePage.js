@@ -27,13 +27,12 @@ const HomePage = (props) => {
         formData.append("quantity", ordobj.quantity);
 
 
-        axios.put(`https://customerbac.onrender.com/api/payment/`, formData)
+        axios.post(`https://customerbac.onrender.com/api/payment/`, formData)
             .then((response) => {
                 console.log(response);
             })
             .catch((error) => console.log("Error : \n" + error))
-        
-      
+         
       }
 
     return (
