@@ -1,6 +1,7 @@
-import React from "react";
 import "./Card.css";
 import { Link } from "react-router-dom";
+//import React, { useState, useEffect } from "react";
+//import axios from "axios";
 
 const cardsData = [
   {
@@ -110,7 +111,20 @@ const cardsData = [
   },
 ];
 
+
 const Cards = () => {
+/* const [cardsData, setCardsData] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/category/")
+      .then((response) => {
+        setCardsData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  */
   return (
     <div>
       <h1>Shop By Category</h1>

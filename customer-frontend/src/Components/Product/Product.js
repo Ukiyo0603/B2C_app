@@ -1,10 +1,21 @@
 import React from 'react';
 import './Product.css';
 import { Link } from 'react-router-dom';
+//import axios from 'axios';
+//import { useState, useEffect } from React; 
 
 function ProductCard(props) {
-  const { image, title, weight, price } = props;
+  const { image, title, weight, price }  = props;
+  /*const [products, setProducts] = useState([]);
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await axios.get('http://localhost:8000/api/products/');
+      setProducts(response.data);
+    };
+    fetchProducts();
+  }, []);
+*/
   return (
     <div className="product-card">
       <div className="product-image">
