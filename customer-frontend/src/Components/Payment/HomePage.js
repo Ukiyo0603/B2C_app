@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import {API_URL} from '../config/index';
+import ProductImage from "./product.png";
 
 const HomePage = (props) => {
     const { ordobj } = props;
@@ -42,15 +43,15 @@ const HomePage = (props) => {
       }
 
     return (
-        <section>
+        <section className=''>
             <div className="product">
             <img
-                src="https://i.imgur.com/EHyR2nP.png"
-                alt="The cover of Stubborn Attachments"
+                src={ProductImage}
+                alt="The cover of Product Image"
             />
             <div className="description">
-            <h3>Stubborn Attachments</h3>
-            <h5>$20.00</h5>
+            <h3>Product Name</h3>
+            <h5>₹ 20.00</h5>
             </div>
             </div>
             <form action="api/payment" method="POST" onSubmit={handlesubmit}>
