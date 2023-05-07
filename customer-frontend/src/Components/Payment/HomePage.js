@@ -29,7 +29,7 @@ const HomePage = () => {
             <h5>$20.00</h5>
             </div>
             </div>
-            <form action={`${API_URL}api/payment`} method="POST">
+            <form action={`${API_URL}api/stripe/create-checkout-session`} method="POST">
             <button type="submit">
                 Checkout
             </button>
