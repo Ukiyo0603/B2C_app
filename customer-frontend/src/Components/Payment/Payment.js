@@ -1,14 +1,17 @@
 import React from "react";
-import {Route, BrowserRouter as Router} from 'react-router-dom';
 import HomePage from './HomePage';
+import { useLocation } from "react-router-dom";
 
 const Payment = () => {
+  const location =useLocation();
+  let ordobj = location.state.obj.orderobj;
+  console.log(ordobj);
 
-    return (
-        <>
-          <HomePage/>
-        </>
-    );
+  return (
+    <>
+      <HomePage ordobj={ordobj} />
+    </>
+  );
 };
 
 export default Payment;

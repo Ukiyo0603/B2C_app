@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
+import axios from 'axios';
 
-const HomePage = () => {
+const HomePage = (props) => {
+    const { ordobj } = props;
     useEffect(() => {
+      console.log(ordobj)
         // Check to see if this is a redirect back from Checkout
         const query = new URLSearchParams(window.location.search);
     
@@ -16,6 +19,22 @@ const HomePage = () => {
         }
       }, []);
 
+      const handlesubmit = async (event) => {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append("price", ordobj.price);
+        formData.append("quantity", ordobj.quantity);
+
+
+        axios.put(`https://customerbac.onrender.com/api/payment/`, formData)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => console.log("Error : \n" + error))
+        
+      
+      }
+
     return (
         <section>
             <div className="product">
@@ -28,8 +47,8 @@ const HomePage = () => {
             <h5>$20.00</h5>
             </div>
             </div>
-            <form action="api/payment" method="POST">
-            <button type="submit">
+            <form action="api/payment" method="POST" onSubmit={handlesubmit}>
+            <button type="submit" onClick={handlesubmit}>
                 Checkout
             </button>
             </form>
