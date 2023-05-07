@@ -24,8 +24,14 @@ const Order = () => {
   // }, []);
 
   const [orderobj, setorderobj] = useState({
-    price:120,
-    quantity:5
+    "product":"abc",
+    "customer":"cde",
+    "quantity":4,
+    "price":120,
+    "address":"puneeee",
+    "phone":"9900990099",
+    "date":"08/05/2023",
+    "status":true
   });
 
 

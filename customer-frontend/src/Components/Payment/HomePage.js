@@ -23,9 +23,15 @@ const HomePage = (props) => {
       const handlesubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
-        formData.append("price", ordobj.price);
+        formData.append("product", ordobj.product);
+        formData.append("customer", ordobj.customer);
         formData.append("quantity", ordobj.quantity);
-
+        formData.append("price", ordobj.price);
+        formData.append("address", ordobj.address);
+        formData.append("phone", ordobj.phone);
+        formData.append("date", ordobj.date);
+        formData.append("status", ordobj.status);
+        console.log(formData);
 
         axios.post(`https://customerbac.onrender.com/api/payment/`, formData)
             .then((response) => {
