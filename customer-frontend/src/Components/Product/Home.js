@@ -6,7 +6,7 @@ import Order from "./Product"
 const Home = () => {
   return (
     <div className="major-container">
-      <Header screenname={ "CUS 102" } />
+      <Header />
       <div className="C">
         <Order />
       </div>

@@ -41,10 +41,3 @@ button.order-button {
 button.order-button:hover {
   opacity: 0.8;
 }
-
-
-@media only screen and (max-width: 768px){
-  .order-main{
-    margin-top: -22rem;
-  }
-}

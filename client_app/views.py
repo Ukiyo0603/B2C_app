@@ -4,6 +4,7 @@ from .products import products
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from client_app.models import *
+from .serializers import *
 
 # Create your views here.
 @api_view(['GET'])
@@ -19,9 +20,6 @@ def index(request):
 
 def inx(request):
     return render(request,'base.html')
-
-
- 
 
 from django.contrib.auth.hashers import check_password
 
@@ -40,11 +38,11 @@ class CheckOut(View):
 
         #ism terko serializer banan padenge models k objects ko store kar then uska serializer daal define kar then get for same
 
-        data = Cart.objects.all()
+        data = OrderItem.objects.all()
         serializer = CartSerializer(data, context={'request': request}, many=True)
 
         cart = request.session.get('cart')
-        products = Product.get_products_by_id(list(cart.keys()))
+        products = Products.get_products_by_id(list(cart.keys()))
         print(address, phone, customer, cart, products)
 
         for product in products:

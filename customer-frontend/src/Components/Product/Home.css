@@ -2,8 +2,17 @@
     display: flex;
     flex-direction: column;
     background-color: #b3d8ca;
-    height: 150vh;
+    height: 100vh;
     color: #fff;
   
   }
 
+  .C{
+    height: auto;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .C{
+      padding-top: 22rem;
+    }
+  }

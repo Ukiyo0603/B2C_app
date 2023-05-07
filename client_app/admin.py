@@ -10,7 +10,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name']
 
 
-admin.site.register(Product)
+admin.site.register(Products)
 admin.site.register(Category)
 admin.site.register(Customer)
 admin.site.register(SubCategory)

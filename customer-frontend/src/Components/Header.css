@@ -1,7 +1,7 @@
 .navbar-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   height: 10vh;
   background-color: #9DC08B;
@@ -12,13 +12,13 @@
 .navbar-left {
   display: flex;
   align-items: center;
-  flex: 1;
 }
 
 .navbar-search {
   display: flex;
   align-items: center;
   height: 30px;
+  margin-right: 20rem;
   background-color: #fff;
   border-radius: 20px;
   padding: 0 10px;
@@ -38,29 +38,16 @@
   padding: 5px;
 }
 
-.sub-nav{
-  margin-top: 0.5rem;
+.navbar-location {
   display: flex;
-  flex-direction: row;
-  height: 7vh;
-  justify-content: space-between;
-  padding: 0 20px;
-  border: 2px solid #9dc08b;
-  width: 100%;
-}
-
-.date, .screen-num{
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding-top: 10px;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
 }
 
 .navbar-right {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  flex: 1;
 }
 
 .navbar-icon {
@@ -88,32 +75,11 @@
     padding: 20px;
   }
 
-  .navbar-left {
+  .side {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    width: 100%;
-  }
-
-  .navbar-right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1rem;
-    width: 100%;
-  }
-
-  .sub-nav {
-    flex-direction: row;
-    height: auto;
     justify-content: center;
     align-items: center;
-    margin-top: 1rem;
+    cursor: pointer;
   }
-
-  .date, .screen-num {
-    font-size: 1rem;
-    padding: 5px;
-  }
+  
 }
