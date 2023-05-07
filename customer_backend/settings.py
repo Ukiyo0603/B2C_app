@@ -121,6 +121,18 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+SITE_URL = 'http://localhost:3000'
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ]
+}
+
+STRIPE_SECRET_KEY = 'sk_test_51N554rSDYZHuyXZlMvR4fjzYX74MF5iCigw8CWywKTeOcfRVzVeg71jrb5vJToi4rvQHbz59IfQDDPQq59yS3w5q00m4hv3w4B'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

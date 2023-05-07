@@ -28,7 +28,7 @@ const HomePage = () => {
             <h5>$20.00</h5>
             </div>
             </div>
-            <form action="api/stripe/create-checkout-session" method="POST">
+            <form action="api/payment" method="POST">
             <button type="submit">
                 Checkout
             </button>
@@ -36,5 +36,4 @@ const HomePage = () => {
         </section>
     );
 };
-
 export default HomePage;

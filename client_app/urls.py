@@ -1,5 +1,6 @@
 from django.urls import path, include
 from client_app import views
+from .views import StripeCheckoutView
 
 urlpatterns = [
     path('', views.getRoutes, name="getRoutes"),
