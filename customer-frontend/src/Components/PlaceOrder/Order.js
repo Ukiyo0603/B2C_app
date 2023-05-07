@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Order.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -23,6 +23,12 @@ const Order = () => {
   //   };
   // }, []);
 
+  const [orderobj, setorderobj] = useState({
+    price:120,
+    quantity:5
+  });
+
+
   return (
     <div className="order-main">
       <div className="order-head">
@@ -41,7 +47,7 @@ const Order = () => {
         <span>120Rs</span>
       </div>
       <div className="button-main">
-        <button className="order-button" onClick={()=>navigate('/payment')}>Place Order</button>
+        <button className="order-button" onClick={() => navigate("/payment", { state: { obj: { orderobj } } })}>Place Order</button>
       </div>
     </div>
   );
