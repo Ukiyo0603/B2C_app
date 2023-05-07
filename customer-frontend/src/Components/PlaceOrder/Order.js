@@ -1,25 +1,27 @@
 import React, { useEffect } from 'react';
 import './Order.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Order = () => {
-  const handlePlaceOrderClick = async () => {
-    try {
-      const response = await axios.get('http://127.0.0.1:8000/api/payment/');
-      window.location.href = response.data.payment_url;
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const navigate = useNavigate();
+  // const handlePlaceOrderClick = async () => {
+  //   try {
+  //     const response = await axios.get('http://127.0.0.1:8000/api/payment/');
+  //     window.location.href = response.data.payment_url;
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    const placeOrderButton = document.querySelector('.order-button');
-    placeOrderButton.addEventListener('click', handlePlaceOrderClick);
+  // useEffect(() => {
+  //   const placeOrderButton = document.querySelector('.order-button');
+  //   placeOrderButton.addEventListener('click', handlePlaceOrderClick);
 
-    return () => {
-      placeOrderButton.removeEventListener('click', handlePlaceOrderClick);
-    };
-  }, []);
+  //   return () => {
+  //     placeOrderButton.removeEventListener('click', handlePlaceOrderClick);
+  //   };
+  // }, []);
 
   return (
     <div className="order-main">
@@ -39,7 +41,7 @@ const Order = () => {
         <span>120Rs</span>
       </div>
       <div className="button-main">
-        <button className="order-button">Place Order</button>
+        <button className="order-button" onClick={()=>navigate('/payment')}>Place Order</button>
       </div>
     </div>
   );
