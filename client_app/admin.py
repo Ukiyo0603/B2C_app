@@ -17,5 +17,6 @@ admin.site.register(SubCategory)
 
 admin.site.register(DelivPart)
 admin.site.register(Invman)
+admin.site.register(Order)
 
 # Register your models here.

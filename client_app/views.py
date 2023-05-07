@@ -75,7 +75,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 class StripeCheckoutView(APIView):
     def post(self, request):
-        if request.method == "POST":
+        if request.method == "GET":
             try:
                 checkout_session = stripe.checkout.Session.create(
                     line_items=[
