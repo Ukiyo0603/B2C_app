@@ -6,6 +6,7 @@ import Product from "./routes/Product";
 import ProductDetail from "./routes/ProductDetail";
 import PlaceOrder from "./routes/PlaceOrder";
 import SignUp from "./routes/SignUp";
+import Payment from "./routes/Payment";
 
 function App() {
   return (
@@ -17,9 +18,12 @@ function App() {
         <Route exact path="/product" element={<Product />} />
         <Route exact path="/productdetails" element={<ProductDetail />} />
         <Route exact path="/placeorder" element={<PlaceOrder />} />
+        <Route exact path="/payment" element={<Payment />} />
       </Routes>
     </div>
   );
 }
 
 export default App;
+
+
