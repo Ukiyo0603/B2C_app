@@ -69,29 +69,33 @@ from django.views import View
 #PAYMENT Stripe
 
 
-import stripe
-# This is your test secret API key.
+# import stripe
+# # This is your test secret API key.
 
-stripe.api_key = settings.STRIPE_SECRET_KEY
-def stripe_payment(request):
-    if request.method == "POST":
-        amount = int(request.POST['amount']) * 100
-        try:
-            checkout_session = stripe.checkout.Session.create(
-                        # Provide the exact Price ID (for example, pr_1234) of the product you want to sell   
-                amount=amount,
-                mode='payment',
-                success_url=settings.SITE_URL + f'?success=true&session_id={CHECKOUT_SESSION_ID}',
-                cancel_url=settings.SITE_URL + '?canceled=true&session_id={CHECKOUT_SESSION_ID}',
-            )
+# stripe.api_key = settings.STRIPE_SECRET_KEY
+# def stripe_payment(request):
+#     if request.method == "POST":
+#         amount = int(request.POST['amount']) * 100
+#         try:
+#             checkout_session = stripe.checkout.Session.create(
+#                         # Provide the exact Price ID (for example, pr_1234) of the product you want to sell   
+#                 amount=amount,
+#                 mode='payment',
+#                 success_url=settings.SITE_URL + f'?success=true&session_id={CHECKOUT_SESSION_ID}',
+#                 cancel_url=settings.SITE_URL + '?canceled=true&session_id={CHECKOUT_SESSION_ID}',
+#             )
 
-            return redirect(checkout_session.url)
-        except:
-            return Response(
-                {'error': 'Something went wrong while creating the stripe checkout session'},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR
-            )
+#             return redirect(checkout_session.url)
+#         except:
+#             return Response(
+#                 {'error': 'Something went wrong while creating the stripe checkout session'},
+#                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
+#             )
 
+
+from django.conf import settings
+from rest_framework import status
+from rest_framework.response import Response
 from rest_framework.views import APIView
 import paypalrestsdk
 from .serializers import PaymentSerializer
