@@ -115,6 +115,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+PAYPAL_CLIENT_ID = 'AUPkXUZOjuaMJvfyhyGF3kIKZCG5Ty2_0Ml2JJCID66ocSzufWQnli4iobXibIj1n7NZdXQL0ZsSzQrH'
+PAYPAL_CLIENT_SECRET = 'ENiBbVL5uRf977wpV2lnL8ceeGB4dzxu1i18xrg50Tr-jZvBWO-zo7b8ne83XbmB0ic1vqU2Kvsh6mc6'
+PAYPAL_MODE = 'sandbox'  # or 'live' if you're using a live PayPal account
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -131,7 +134,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-STRIPE_SECRET_KEY = 'sk_test_51N554rSDYZHuyXZlMvR4fjzYX74MF5iCigw8CWywKTeOcfRVzVeg71jrb5vJToi4rvQHbz59IfQDDPQq59yS3w5q00m4hv3w4B'
+# STRIPE_SECRET_KEY = 'sk_test_51N554rSDYZHuyXZlMvR4fjzYX74MF5iCigw8CWywKTeOcfRVzVeg71jrb5vJToi4rvQHbz59IfQDDPQq59yS3w5q00m4hv3w4B'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
