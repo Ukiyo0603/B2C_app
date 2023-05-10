@@ -14,6 +14,7 @@ import Orders from "./routes/Orders";
 import Cart from "./routes/Cart";
 import Notification from "./routes/Notification";
 import Wallet from "./routes/Wallet";
+import Payment from "./routes/Payment";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/notification" element={<Notification />} />
         <Route exact path="/wallet" element={<Wallet />} />
+        <Route exact path="/payment" element={<Payment />} />
       </Routes>
     </div>
   );
