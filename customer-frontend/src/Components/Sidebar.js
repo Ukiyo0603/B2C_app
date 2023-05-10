@@ -6,7 +6,7 @@ import {
   FaShoppingCart,
   FaSignOutAlt,
 } from "react-icons/fa";
-import User from "../Assets/user.png";
+import User from "./Assets/user.png";
 import "./Sidebar.css";
 
 function Sidebar() {

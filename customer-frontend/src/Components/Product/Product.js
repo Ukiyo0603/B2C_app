@@ -34,13 +34,6 @@ function ProductCard(props) {
 function ProductList() {
   return (
     <div className="product-list-page">
-      <nav className="top-nav">
-        <ul>
-          <li><Link to="/product/fresh">Fresh Vegetables</Link></li>
-          <li><Link to="/product/seasonal">Seasonal Fresh Fruits</Link></li>
-          <li><Link to="/product/freshly-cut">Freshly Cut</Link></li>
-        </ul>
-      </nav>
       <div className="product-list-container">
         <ProductCard
           image="https://via.placeholder.com/150x150"
