@@ -16,15 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include,re_path
-
+from django.urls import path
+from client_app.views import PaymentAPIView, ExecutePaymentAPIView
 from client_app import views
 from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name="custom"),
+    path('payments/', PaymentAPIView.as_view(), name='payment'),
+    path('execute-payment/', ExecutePaymentAPIView.as_view(), name='execute_payment'),
     path('uom',views.inx,name="cuom"),
-    path('api/', include('client_app.urls')),
+    # path('payments/', views.PaymentAPIView.as_view(), name='payment'),
+    # path('payment/', views.stripe_payment),
     path('manifest.json', TemplateView.as_view(template_name='manifest.json', content_type='application/json'), name='manifest.json'),
 
     # re_path(r'^api/customer/$', views.custm_list),

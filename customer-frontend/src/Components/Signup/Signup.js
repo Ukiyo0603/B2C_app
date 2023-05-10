@@ -7,44 +7,11 @@ import { CustomerSchema } from "./Schema";
 
 function Signup() {
   const navigate = useNavigate();
-  const statesList = [
-    "Andaman and Nicobar Islands",
-    "Andhra Pradesh",
-    "Arunachal Pradesh",
-    "Assam",
-    "Bihar",
-    "Chandigarh",
-    "Chhattisgarh",
-    "Dadra and Nagar Haveli and Daman and Diu",
-    "Delhi",
-    "Goa",
-    "Gujarat",
-    "Haryana",
-    "Himachal Pradesh",
-    "Jammu and Kashmir",
-    "Jharkhand",
-    "Karnataka",
-    "Kerala",
-    "Ladakh",
-    "Lakshadweep",
-    "Madhya Pradesh",
-    "Maharashtra",
-    "Manipur",
-    "Meghalaya",
-    "Mizoram",
-    "Nagaland",
-    "Odisha",
-    "Puducherry",
-    "Punjab",
-    "Rajasthan",
-    "Sikkim",
-    "Tamil Nadu",
-    "Telangana",
-    "Tripura",
-    "Uttar Pradesh",
-    "Uttarakhand",
-    "West Bengal"
-  ];
+  const state = require('country-state-city').State;
+  const city = require('country-state-city').City;
+  const statelist = state.getStatesOfCountry("IN");
+  const [citylist, setcitylist] = useState([]);
+
 
   const initialValues = {
     firstname: '',
@@ -90,6 +57,11 @@ function Signup() {
 
   }
 
+  const nestedChange = (e) => {
+    handleChange(e);
+    const temp = city.getCitiesOfState("IN", e.target.value);
+    setcitylist(temp);
+  }
 
   return (
     <div className="signup-container">
@@ -125,12 +97,10 @@ function Signup() {
 
             <div className="field-input">
               <label>State</label>
-              <select className="state-input" name="state" value={values.state} onBlur={handleBlur} onChange={handleChange} >
+              <select className="state-input" name="state" value={values.state} onBlur={handleBlur} onChange={nestedChange} >
                 <option value="">Select a state...</option>
-                {statesList.map((state, index) => (
-                  <option key={index} value={state}>
-                    {state}
-                  </option>
+                {statelist.map((b) => (
+                  <option key={b.id} value={b.isoCode}>{b.name}</option>
                 ))}
               </select>
             </div>
@@ -138,11 +108,9 @@ function Signup() {
             <div className="field-input">
               <label>City</label>
               <select className="state-input" name="city" value={values.city} onBlur={handleBlur} onChange={handleChange} >
-                <option value="">Select a city...</option>
-                {statesList.map((state, index) => (
-                  <option key={index} value={state}>
-                    {state}
-                  </option>
+                <option value='select'>Select a city</option>
+                {citylist.map((b) => (
+                  <option key={b.id} value={b.name}>{b.name}</option>
                 ))}
               </select>
             </div>
