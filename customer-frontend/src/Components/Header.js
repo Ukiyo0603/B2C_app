@@ -17,7 +17,7 @@ function Navbar(props) {
         <div className="navbar-left">
           <form className="navbar-search">
             <input type="text" placeholder="Search" />
-            <button type="submit">
+            <button type="submit" className="search-btn">
               <FaSearch />
             </button>
           </form>

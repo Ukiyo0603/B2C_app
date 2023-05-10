@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import './Signup.css'
 import { useFormik } from "formik";
@@ -51,7 +51,7 @@ function Signup() {
     })
       .then((response) => {
         console.log(response);
-        navigate('/home')
+        navigate('/otp')
       })
       .catch((error) => console.log(error))
 
