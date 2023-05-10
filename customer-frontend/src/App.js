@@ -6,6 +6,7 @@ import Product from "./routes/Product";
 import ProductDetail from "./routes/ProductDetail";
 import PlaceOrder from "./routes/PlaceOrder";
 import SignUp from "./routes/SignUp";
+
 import Profile from "./routes/Profile";
 import UpdateProfile from "./routes/UpdateProfile";
 import ChangePassword from "./routes/ChangePassword";
@@ -14,6 +15,9 @@ import Orders from "./routes/Orders";
 import Cart from "./routes/Cart";
 import Notification from "./routes/Notification";
 import Wallet from "./routes/Wallet";
+
+import Payment from "./routes/Payment";
+
 
 function App() {
   return (
@@ -25,6 +29,7 @@ function App() {
         <Route exact path="/product" element={<Product />} />
         <Route exact path="/productdetails" element={<ProductDetail />} />
         <Route exact path="/placeorder" element={<PlaceOrder />} />
+
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/updateProfile" element={<UpdateProfile />} />
         <Route exact path="/changePassword" element={<ChangePassword />} />
@@ -33,9 +38,15 @@ function App() {
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/notification" element={<Notification />} />
         <Route exact path="/wallet" element={<Wallet />} />
+
+
+        <Route exact path="/payment" element={<Payment />} />
+
       </Routes>
     </div>
   );
 }
 
 export default App;
+
+

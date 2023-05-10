@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9i6piyk6up+b(rza0r@ou05s^l8dz@+bp=sk404f*4*3%d=$(3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -115,11 +115,26 @@ USE_I18N = True
 
 USE_TZ = True
 
+PAYPAL_CLIENT_ID = 'AUPkXUZOjuaMJvfyhyGF3kIKZCG5Ty2_0Ml2JJCID66ocSzufWQnli4iobXibIj1n7NZdXQL0ZsSzQrH'
+PAYPAL_CLIENT_SECRET = 'ENiBbVL5uRf977wpV2lnL8ceeGB4dzxu1i18xrg50Tr-jZvBWO-zo7b8ne83XbmB0ic1vqU2Kvsh6mc6'
+PAYPAL_MODE = 'sandbox'  # or 'live' if you're using a live PayPal account
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+SITE_URL = 'http://localhost:3000'
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ]
+}
+
+# STRIPE_SECRET_KEY = 'sk_test_51N554rSDYZHuyXZlMvR4fjzYX74MF5iCigw8CWywKTeOcfRVzVeg71jrb5vJToi4rvQHbz59IfQDDPQq59yS3w5q00m4hv3w4B'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

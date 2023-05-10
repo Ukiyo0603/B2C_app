@@ -30,3 +30,9 @@ class InvmanSerializer(serializers.ModelSerializer):
     class Meta:
         model = Invman
         fields = '__all__'
+
+
+class PaymentSerializer(serializers.Serializer):
+    amount = serializers.FloatField()
+    currency = serializers.CharField(max_length=3)
+    description = serializers.CharField(max_length=255)
