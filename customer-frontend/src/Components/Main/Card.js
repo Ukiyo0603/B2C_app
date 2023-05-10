@@ -111,9 +111,8 @@ const cardsData = [
   },
 ];
 
-
 const Cards = () => {
-/* const [cardsData, setCardsData] = useState([]);
+  /* const [cardsData, setCardsData] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/category/")
