@@ -1,6 +1,6 @@
 import React from "react";
 import "./SecondMain.css";
-import Advertisement from "../Assets/adv.jpeg";
+import Advertisement from "../Asset/adv.jpeg"
 import { Link } from "react-router-dom";
 
 const subcategory = [
