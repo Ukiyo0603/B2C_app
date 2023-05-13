@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 import Header from "../Header";
-import Order from "./Product"
+import Order from "./SubCategory"
 
 const Home = () => {
   return (
