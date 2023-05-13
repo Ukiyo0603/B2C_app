@@ -137,7 +137,7 @@ const Cards = () => {
             <img src={card.image} alt="card-image" className="card-image" />
             <div className="card-title">{card.title}</div>
             <Link
-              to="/product"
+              to="/subcategory"
               className="card-offer"
               style={{ backgroundColor: card.color }}
             >
