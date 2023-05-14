@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
