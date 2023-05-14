@@ -115,7 +115,7 @@ const Cards = () => {
   /* const [cardsData, setCardsData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/category/")
+      .get("https://admindashb.onrender.com/api/category/")
       .then((response) => {
         setCardsData(response.data);
       })
