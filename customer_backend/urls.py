@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path,re_path
-from adminl import views
+from client_app import views
 from django.views.generic.base import TemplateView
 from django.conf import settings  
 from django.urls import path, include 
