@@ -14,12 +14,14 @@ import Orders from "./routes/Orders";
 import Cart from "./routes/Cart";
 import Notification from "./routes/Notification";
 import Wallet from "./routes/Wallet";
+import Phone from "./Components/Phone_Val/Phone";
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route exact path="/" element={<SignUp />} />
+        <Route exact path="/" element={<Phone />} />
+        <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/subcategory" element={<Product />} />
