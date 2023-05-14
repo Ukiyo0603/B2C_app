@@ -1,6 +1,6 @@
 import "./Card.css";
 import { Link } from "react-router-dom";
-//import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 //import axios from "axios";
 
 const cardsData = [
@@ -112,18 +112,22 @@ const cardsData = [
 ];
 
 const Cards = () => {
-  /* const [cardsData, setCardsData] = useState([]);
+
+  const [cardsData, setCardsData] = useState([]);
+
+  const getCatArray = async () => {
+    const response = await fetch(`https://admindashb.onrender.com/api/category/`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+    const json = await response.json();
+    setCardsData(json);
+}
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/category/")
-      .then((response) => {
-        setCardsData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    getCatArray();
   }, []);
-  */
   return (
     <div>
       <h1>Shop By Category</h1>
@@ -135,7 +139,7 @@ const Cards = () => {
             style={{ backgroundColor: card.backcolor }}
           >
             <img src={card.image} alt="card-image" className="card-image" />
-            <div className="card-title">{card.title}</div>
+            <div className="card-title">{card.category}</div>
             <Link
               to="/subcategory"
               className="card-offer"
