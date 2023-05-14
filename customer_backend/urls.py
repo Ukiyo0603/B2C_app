@@ -26,6 +26,7 @@ urlpatterns = [
     path('uom',views.inx,name="cuom"),
     path('api/', include('client_app.urls')),
     path('manifest.json', TemplateView.as_view(template_name='manifest.json', content_type='application/json'), name='manifest.json'),
+    path('cart/', include('cart.urls')),
 
     # re_path(r'^api/customer/$', views.custm_list),
     # re_path(r'^api/product/$', views.prod_list),
