@@ -36,7 +36,7 @@ export default function ProductList() {
         image: "https://via.placeholder.com/150x150",
         productname: "Product name",
         brand: "250g",
-        productprice: "Rs.79"
+        productprice: "79"
     }
 
 
@@ -54,30 +54,15 @@ export default function ProductList() {
                     }
                     )
                 }
-                {/* <ProductCard
-                    image="https://via.placeholder.com/150x150"
-                    title="Product name"
-                    weight="250g"
-                    price="Rs.79"
+                <ProductCard
+                    obj={tempobj}
                 />
                 <ProductCard
-                    image="https://via.placeholder.com/150x150"
-                    title="Product name"
-                    weight="500g"
-                    price="Rs.59"
+                    obj={tempobj}
                 />
                 <ProductCard
-                    image="https://via.placeholder.com/150x150"
-                    title="Product name"
-                    weight="1000g"
-                    price="Rs.120"
+                    obj={tempobj}
                 />
-                <ProductCard
-                    image="https://via.placeholder.com/150x150"
-                    title="Product name"
-                    weight="1500g"
-                    price="Rs.199"
-                /> */}
             </div>
             <div className="subcategory-row">
                 <ProductCard
@@ -116,7 +101,6 @@ export default function ProductList() {
 }
 
 function ProductCard(props) {
-    // const { image, title, brand, price } = props;
     const { obj } = props;
 
     return (
@@ -125,7 +109,7 @@ function ProductCard(props) {
                 <img src={obj.image} alt={obj.productname} />
             </div>
             <h2 className="product-title ">{obj.productname}</h2>
-            <p className="product-weight ">{obj.brand}</p>
+            <p className="product-weight ">brand : {obj.brand}</p>
             <div className="product-price">
                 <p>Rs. {obj.productprice}</p>
                 <button className='cart-btn'><Link to="/productdetails" state={obj} >Add to cart</Link></button>
