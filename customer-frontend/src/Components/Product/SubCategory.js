@@ -1,6 +1,6 @@
 
 import './SubCategory.css';
-import { Link,useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 //import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
@@ -11,7 +11,7 @@ function SubcategoryPage(props) {
   let category = location.state;
   console.log(category);
 
-  const [products, setProducts] = useState([]);
+  const [subcats, setsubcats] = useState([]);
 
   const getSubCatArray = async () => {
     const response = await fetch(`https://admindashb.onrender.com/api/subcategory/`, {
@@ -21,13 +21,13 @@ function SubcategoryPage(props) {
       }
     });
     const json = await response.json();
-    let jsonobj=[];
+    let jsonobj = [];
     json.filter((item) => {
       if (item.category === category) {
         jsonobj.push(item);
       }
     })
-    setProducts(jsonobj);
+    setsubcats(jsonobj);
     console.log(jsonobj)
   }
   useEffect(() => {
@@ -128,9 +128,9 @@ function SubcategoryPage(props) {
 
 
     <>
-  <h1 className="subcategory-heading">Shop By Subcategory</h1>
+      <h1 className="subcategory-heading">Shop By Subcategory</h1>
       <div className="mt-0 cards">
-        {products.map((card) => (
+        {subcats.map((card) => (
           <div
             key={card.id}
             className="card"
@@ -139,7 +139,8 @@ function SubcategoryPage(props) {
             <img src={card.image} alt="card-image" className="card-image" />
             <div className="card-title">{card.subcategory}</div>
             <Link
-              to="/subcategory"
+              to="/productlist"
+              state={{ subcategory: card.subcategory, category: category }}
               className="card-offer"
               style={{ backgroundColor: card.color }}
             >
@@ -188,7 +189,7 @@ function SubcategoryPage(props) {
 
 function ProductCard(props) {
   const { image, title, weight, price } = props;
-  
+
   return (
     <div className="product-card">
       <div className="product-image">
