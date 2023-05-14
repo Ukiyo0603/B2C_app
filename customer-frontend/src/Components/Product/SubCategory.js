@@ -1,21 +1,9 @@
 
-import React from 'react';
 import './SubCategory.css';
 import { Link } from 'react-router-dom';
-
 //import axios from 'axios';
-//import { useState, useEffect } from React; 
+import React, { useState, useEffect } from 'react'; 
 
-  /*const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await axios.get('http://localhost:8000/api/products/');
-      setProducts(response.data);
-    };
-    fetchProducts();
-  }, []);
-*/
 
 function SubcategoryPage() {
   return (
@@ -109,6 +97,21 @@ function SubcategoryPage() {
 
 function ProductCard(props) {
   const { image, title, weight, price } = props;
+  const [products, setProducts] = useState([]);
+
+  const getSubCatArray = async () => {
+    const response = await fetch(`https://admindashb.onrender.com/api/subcategory/`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+    const json = await response.json();
+    setProducts(json);
+}
+  useEffect(() => {
+    getSubCatArray();
+  }, []);
 
   return (
     <div className="product-card">
