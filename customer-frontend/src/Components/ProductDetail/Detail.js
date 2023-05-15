@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import "./Detail.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Detail = () => {
-  const location = useLocation()
-  let obj = location.state;
-  console.log(obj);
-  
+  const navigate = useNavigate();
   const [selectedQty, setSelectedQty] = useState(1);
+  const obj = {
+    productname: "Product Name",
+    productprice: "Product Price",
+    uom: "Product UOM",
+  };
 
   const incrementQty = () => {
     setSelectedQty(selectedQty + 1);
@@ -19,10 +22,24 @@ const Detail = () => {
     }
   };
 
+  const handlePlaceOrderClick = async () => {
+    try {
+      await axios.post("http://127.0.0.1:8000/cart/cart/", {
+        //add data
+      });
+      navigate("/placeorder");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="product-detail">
       <div className="product-detail-image">
-        <img src="https://imgs.search.brave.com/ZPqjz-A-5mwa6K9YaIHw_gOeZlD3a_9zKo1M3o9lMak/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/dmVnYW4uaW8vYmxv/Zy9hc3NldHMvMTAt/aGVhbHRoaWVzdC12/ZWdldGFibGVzLXRv/LWluY2x1ZGUtaW4t/eW91ci12ZWdhbi1k/aWV0LTIwMTgtMDQt/MTYvaGVhbHRoaWVz/dC12ZWdldGFibGVz/LWRmMWNmNTUwNzEx/MDc2ZDA1MmVhYWRl/MTJjMzgyODlhMjYz/N2MzOGU1NDYxODJk/M2MwMTM2YTkwY2Iw/YmIwYjMuanBn" alt="product-image" />
+        <img
+          src="https://imgs.search.brave.com/ZPqjz-A-5mwa6K9YaIHw_gOeZlD3a_9zKo1M3o9lMak/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/dmVnYW4uaW8vYmxv/Zy9hc3NldHMvMTAt/aGVhbHRoaWVzdC12/ZWdldGFibGVzLXRv/LWluY2x1ZGUtaW4t/eW91ci12ZWdhbi1k/aWV0LTIwMTgtMDQt/MTYvaGVhbHRoaWVz/dC12ZWdldGFibGVz/LWRmMWNmNTUwNzEx/MDc2ZDA1MmVhYWRl/MTJjMzgyODlhMjYz/N2MzOGU1NDYxODJk/M2MwMTM2YTkwY2Iw/YmIwYjMuanBn"
+          alt="product-image"
+        />
       </div>
       <div className="product-detail-info">
         <h1 className="product-detail-title">{obj.productname}</h1>
@@ -57,7 +74,13 @@ const Detail = () => {
             </button>
           </div>
         </div>
-        <Link to="/placeorder" className="product-detail-cart">Buy Now</Link>
+        <Link
+          to="/placeorder"
+          onClick={handlePlaceOrderClick}
+          className="product-detail-cart"
+        >
+          Buy Now
+        </Link>
       </div>
     </div>
   );

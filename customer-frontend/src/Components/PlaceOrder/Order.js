@@ -1,24 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Order.css';
 import axios from 'axios';
 
 const Order = () => {
-  const handlePlaceOrderClick = async () => {
-    try {
-      const response = await axios.get('http://127.0.0.1:8000/api/payment/');
-      window.location.href = response.data.payment_url;
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [orderDetails, setOrderDetails] = useState(null);
 
   useEffect(() => {
-    const placeOrderButton = document.querySelector('.order-button');
-    placeOrderButton.addEventListener('click', handlePlaceOrderClick);
-
-    return () => {
-      placeOrderButton.removeEventListener('click', handlePlaceOrderClick);
+    const fetchOrderDetails = async () => {
+      try {
+        const response = await axios.get('API_URL');
+        setOrderDetails(response.data);
+      } catch (error) {
+        console.error(error);
+      }
     };
+
+    fetchOrderDetails();
   }, []);
 
   return (
@@ -41,6 +38,12 @@ const Order = () => {
       <div className="button-main">
         <button className="order-button">Place Order</button>
       </div>
+      {orderDetails && (
+        <div className="order-details">
+          <h2>Order Details:</h2>
+          {/* Display order details*/}
+        </div>
+      )}
     </div>
   );
 };
