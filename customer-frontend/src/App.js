@@ -15,7 +15,7 @@ import Cart from "./routes/Cart";
 import Notification from "./routes/Notification";
 import Wallet from "./routes/Wallet";
 import Phone from "./Components/Phone_Val/Phone";
-import ShowPrudcts from "./routes/ShowProducts";
+import ShowProducts from "./routes/ShowProducts";
 
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/notification" element={<Notification />} />
         <Route exact path="/wallet" element={<Wallet />} />
-        <Route exact path="/productlist" element={<ShowPrudcts />} />
+        <Route exact path="/productlist" element={<ShowProducts />} />
       </Routes>
     </div>
   );

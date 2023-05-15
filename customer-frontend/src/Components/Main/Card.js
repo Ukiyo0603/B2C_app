@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 //import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 const Cards = () => {
 
   const [cardsData, setCardsData] = useState([]);
@@ -33,7 +32,7 @@ const Cards = () => {
             className="card"
             style={{ backgroundColor: card.backcolor }}
           >
-            <img src={card.image} alt="card-image" className="card-image" />
+            <img src="https://via.placeholder.com/200" alt="card-image" className="card-image" />
             <div className="card-title">{card.category}</div>
             <Link
               to="/subcategory"

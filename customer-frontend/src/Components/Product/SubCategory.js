@@ -136,7 +136,7 @@ function SubcategoryPage(props) {
             className="card"
             style={{ backgroundColor: card.backcolor }}
           >
-            <img src={card.image} alt="card-image" className="card-image" />
+            <img src="https://via.placeholder.com/200" alt="card-image" className="card-image" />
             <div className="card-title">{card.subcategory}</div>
             <Link
               to="/productlist"
@@ -199,7 +199,7 @@ function ProductCard(props) {
       <p className="product-weight">{weight}</p>
       <div className="product-price">
         <p>{price}</p>
-        <button className='cart-btn'><Link to="/productdetails" >Add to cart</Link></button>
+        <button className='cart-btn'><Link to="/productlist" >Add to cart</Link></button>
       </div>
     </div>
   );
