@@ -13,26 +13,27 @@ function Navbar(props) {
   const currentDate = new Date().toLocaleDateString();
   return (
     <>
-      <div className="navbar-container">
-        <div className="navbar-left">
-          <form className="navbar-search">
+      <div className="header-container">
+        <div className="header-left">
+          <form className="header-search">
             <input type="text" placeholder="Search" />
             <button type="submit" className="search-btn">
               <FaSearch />
             </button>
           </form>
         </div>
-        <div className="navbar-right">
-          <div className="navbar-location">
-            <FaMapMarkerAlt /> Nagpur, Maharashtra
+        <div className="header-right">
+          <div className="header-location">
+            <FaMapMarkerAlt size={25} />
+            <h4>Nagpur, Maharashtra</h4>
           </div>
-          <Link to="/notification" className="navbar-icon">
+          <Link to="/notification" className="header-icon">
             <FaBell />
           </Link>
-          <Link to="/cart" className="navbar-icon">
+          <Link to="/cart" className="header-icon">
             <FaShoppingCart />
           </Link>
-          <Link to="/wallet" className="navbar-icon">
+          <Link to="/wallet" className="header-icon">
             <FaWallet />
           </Link>
         </div>
