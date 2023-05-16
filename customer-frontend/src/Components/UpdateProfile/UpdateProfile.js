@@ -4,7 +4,7 @@ import "./UpdateProfile.css";
 const UpdateProfile = () => {
   return (
     <div className="container">
-      <div className="sub-container-profile">
+      <div className="sub-container-updateprofile">
         <div className="profile-card">
           <div className="update-profile-image">
             <img

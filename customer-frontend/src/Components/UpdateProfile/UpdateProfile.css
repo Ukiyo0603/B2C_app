@@ -75,7 +75,7 @@ button.update {
 
 
 @media screen and (max-width: 768px) {
-  .sub-container-profile{
-    margin-top: -28rem;
+  .sub-container-updateprofile{
+    margin-top: -20rem;
   }
 }
