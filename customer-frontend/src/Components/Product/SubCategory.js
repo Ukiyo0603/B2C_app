@@ -14,7 +14,7 @@ function SubcategoryPage(props) {
   const [subcats, setsubcats] = useState([]);
 
   const getSubCatArray = async () => {
-    const response = await fetch(`https://admindashb.onrender.com/api/subcategory/`, {
+    const response = await fetch(`https://adminlm.onrender.com/api/subcategory/`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
