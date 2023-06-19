@@ -36,24 +36,29 @@ export default function Phone() {
     }
   
     function onSignup() {
-      setLoading(true);
-      onCaptchVerify();
+      if(ph.length!=12){
+        toast.error("Please enter a valid phone number")
+        return
+      }
+      navigate("/signup")
+      // setLoading(true);
+      // onCaptchVerify();
   
-      const appVerifier = window.recaptchaVerifier;
+      // const appVerifier = window.recaptchaVerifier;
   
-      const formatPh = "+" + ph;
+      // const formatPh = "+" + ph;
   
-      signInWithPhoneNumber(auth, formatPh, appVerifier)
-        .then((confirmationResult) => {
-          window.confirmationResult = confirmationResult;
-          setLoading(false);
-          setShowOTP(true);
-          toast.success("OTP sent successfully!");
-        })
-        .catch((error) => {
-          console.log(error);
-          setLoading(false);
-        });
+      // signInWithPhoneNumber(auth, formatPh, appVerifier)
+      //   .then((confirmationResult) => {
+      //     window.confirmationResult = confirmationResult;
+      //     setLoading(false);
+      //     setShowOTP(true);
+      //     toast.success("OTP sent successfully!");
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //     setLoading(false);
+      //   });
     }
   
     function onOTPVerify() {
@@ -122,7 +127,7 @@ export default function Phone() {
                     htmlFor=""
                     className="font-bold text-xl text-white text-center"
                   >
-                    Verify your phone number
+                    Enter your Phone Number
                   </label>
                   <PhoneInput country={"in"} value={ph} onChange={setPh} />
                   <button
@@ -132,7 +137,8 @@ export default function Phone() {
                     {loading && (
                       <CgSpinner size={20} className="mt-1 animate-spin" />
                     )}
-                    <span>Send code via SMS</span>
+                    {/* <span>Send code via SMS</span> */}
+                    <span>Register</span>
                   </button>
                 </>
               )}

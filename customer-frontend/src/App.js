@@ -22,8 +22,8 @@ function App() {
   return (
     <div>
       <Routes>
-        {/*<Route exact path="/" element={<Phone />} />*/}
-        <Route exact path="/" element={<SignUp />} />
+        <Route exact path="/" element={<Phone />} />
+        <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/subcategory" element={<Product />} />

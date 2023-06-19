@@ -2,15 +2,30 @@ import React, { useState } from "react";
 import "./Detail.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+// import { get } from "express/lib/response";
+import { useEffect } from "react";
 
 const Detail = () => {
   const navigate = useNavigate();
   const [selectedQty, setSelectedQty] = useState(1);
-  const obj = {
-    productname: "Product Name",
-    productprice: "Product Price",
-    uom: "Product UOM",
-  };
+  const [obj, setobj] = useState(null)
+
+  useEffect(() => {
+    axios.get("https://adminlm.onrender.com/api/product/")
+      .then(response => {
+        console.log(response.data);
+        setobj(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, [])
+  
+  // const obj = {
+  //   productname: "Product Name",
+  //   productprice: "Product Price",
+  //   uom: "Product UOM",
+  // };
 
   const incrementQty = () => {
     setSelectedQty(selectedQty + 1);
