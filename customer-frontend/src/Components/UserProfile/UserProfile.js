@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const UserProfile = () => {
   return (
-    <div className="container">
+    <div className="container1">
       <div className="sub-container-profile">
 
         <div className="profile-card">
