@@ -70,7 +70,7 @@ function Signup() {
       <div className="signup-box">
         <div className="signup-form">
           <form className="form-container" onSubmit={handleSubmit}>
-            <h2 className="form-header">UPDATE PROFILE</h2>
+            <h2 className="form-header">SIGN UP</h2>
             <hr className="form-input" />
 
             <div className='flex flex-col py-2'>
@@ -144,10 +144,7 @@ function Signup() {
             </div>
 
 
-
-
-            <button type="submit" className="submit-button">UPDATE PROFILE</button>
-            <button type="submit" className="submit-button" onClick={() => navigate("/home")}>SKIP FOR NOW</button>
+            <button type="submit" className="submit-button" onClick={() => navigate("/home")}>SIGNUP</button>
             {/* <p className="login-link">Already registered? <Link to="/login">Log in here</Link></p> */}
           </form>
         </div>

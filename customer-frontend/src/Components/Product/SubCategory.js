@@ -127,7 +127,7 @@ function SubcategoryPage(props) {
 
 
 
-    <>
+    <div className='subcat-container'>
       <h1 className="subcategory-heading">Shop By Subcategory</h1>
       <div className="mt-0 cards">
         {subcats.map((card) => (
@@ -183,7 +183,7 @@ function SubcategoryPage(props) {
         />
       </div>
 
-    </>
+    </div>
   );
 }
 
