@@ -144,7 +144,7 @@ function Signup() {
             </div>
 
 
-            <button type="submit" className="submit-button" onClick={() => navigate("/home")}>SIGNUP</button>
+            <Link type="submit" className="submit-button" onClick={() => navigate("/home")}>SIGNUP</Link>
             {/* <p className="login-link">Already registered? <Link to="/login">Log in here</Link></p> */}
           </form>
         </div>
