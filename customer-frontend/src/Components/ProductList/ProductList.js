@@ -12,7 +12,7 @@ export default function ProductList() {
     const [products, setproducts] = useState([]);
 
     const getProducts = async () => {
-        const response = await fetch(`https://admindashb.onrender.com/api/product/`, {
+        const response = await fetch(`https://adminpr.onrender.com/api/product/`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

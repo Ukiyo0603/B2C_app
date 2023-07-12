@@ -42,7 +42,7 @@ function Signup() {
 
 
   const handlereq = () => {
-    axios.post("https://admindb.onrender.com/api/customer/", {
+    axios.post("https://adminpr.onrender.com/api/customer/", {
       firstname: values.firstname,
       lastname: values.lastname,
       contact: 8899778899,
