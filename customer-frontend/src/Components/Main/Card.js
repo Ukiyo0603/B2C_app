@@ -9,7 +9,7 @@ const Cards = () => {
   const navigate = useNavigate();
 
   const getCatArray = async () => {
-    const response = await fetch(`https://adminlm.onrender.com/api/category/`, {
+    const response = await fetch(`https://adminpr.onrender.com/api/category/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
